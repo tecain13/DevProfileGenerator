@@ -77,6 +77,7 @@ function generateHTML(data) {
            }
            h3 {
            font-size: 2em;
+           text-align: center;
            }
            h4 {
            font-size: 1.5em;
@@ -175,9 +176,61 @@ function generateHTML(data) {
         </head>
         
         <body>
-        
-        ${data.name}
-        ${data.}
+
+        <div class="wrapper">
+        <div class="photo-header">
+            <img src="${data.avatar_url}" alt="Bio image">
+            <h1>Hello!</h1>
+            <h2>My name is ${data.name}!</h2>
+            <h4>Currently @ $${data.company}</h4>
+            <div class="links-nav">
+                <a href="${data.location}">
+                    <div class="nav-link">Location</div>
+                </a>
+                <a href="${data.html_url}">
+                    <div class="nav-link">Github</div>
+                </a>
+                <a href="${data.blog}">
+                    <div class="nav-link">Blog</div>
+                </a>
+            </div>
+        </div>
+        <main>
+        <br>
+            <h3>${data.bio}</h3>
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <h3>Public Repositories</h3>
+                        <p>${data.public_repos}</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <h3>Followers</h3>
+                        <p>${data.followers}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <h3>Github Stars</h3>
+                        <p>${data.stars}</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <h3>Following</h3>
+                        <p>${data.following}</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div class="container"></div>
+
+    </div>
+       
 
         </body>
         </html>`
@@ -185,4 +238,29 @@ function generateHTML(data) {
 
 };
 
-module.exports = generateHTML; 
+module.exports = generateHTML;
+
+// Profile image
+// User name
+// Links to the following:
+// User location via Google Maps
+// User GitHub profile
+// User blog
+// User bio
+// Number of public repositories
+// Number of followers
+// Number of GitHub stars
+// Number of users following
+
+
+// ${data.name}
+// ${data.location}
+//${data.company}
+//${data.bio}
+//${data.avatar_url}
+//${data.blog}
+//${data.public_repos}
+//${data.stars}
+//${data.followers}
+//${data.following}
+//${data.html_url}
