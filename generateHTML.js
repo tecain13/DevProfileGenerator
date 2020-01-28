@@ -137,6 +137,7 @@ function generateHTML(data) {
            padding: 50px;
            padding-left: 100px;
            padding-right: 100px;
+           background-color: ${colors[data.color].wrapperBackground};
            }
   
            .row {
@@ -182,10 +183,10 @@ function generateHTML(data) {
             <img src="${data.avatar_url}" alt="Bio image">
             <h1>Hello!</h1>
             <h2>My name is ${data.name}!</h2>
-            <h4>Currently @ $${data.company}</h4>
+            <h4>Currently @ ${data.company}</h4>
             <div class="links-nav">
                 <a href="${data.location}">
-                    <div class="nav-link">Location</div>
+                    <div class="nav-link">Location: ${data.location}</div>
                 </a>
                 <a href="${data.html_url}">
                     <div class="nav-link">Github</div>

@@ -41,23 +41,32 @@ function init() {
                 const color = response.color;
                 const name = data.data.name;
                 const location = data.data.location;
-                //and keep adding within the squiggly brackets
-                console.log(name);
-                const html = generateHTML({ stars, color, name })
 
-                // console.log(html);
+                console.log(name);
+                const html = generateHTML({ stars, color, ...data.data });
+
+                // var html = "<html><head></head><body>Test</body></html>"
+
+                console.log(html);
                 var conversion = convertFactory({
-                    converterPath: convertFactory.converters.PDF
+                    converterPath: convertFactory.converters.PDF,
+                    timeout: 30000
                 });
 
-                conversion({ html }, function (err, result) {
+                console.log(conversion);
+
+                conversion({ html: html }, function (err, result) {
                     if (err) {
                         return console.error(err);
                     }
 
+                    console.log(result);
 
-                    result.stream.pipe(fs.createWriteStream(path.join(__dirname, 'resume.pdf')));
+                    result.stream.pipe(fs.createWriteStream('resume.pdf'));
                     conversion.kill();
+
+                    // result.stream.pipe(fs.createWriteStream(path.join(__dirname, 'resume.pdf')));
+                    // conversion.kill();
                 });
             })
                 .catch(function (error) {
