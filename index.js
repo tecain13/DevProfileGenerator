@@ -2,7 +2,7 @@ var inquirer = require("inquirer");
 var axios = require("axios");
 var generateHTML = require("./generateHTML");
 var fs = require('fs');
-var convertFactory = require('electron-html-to');
+var pdf = require('html-pdf');
 var path = require('path');
 
 const questions = [
@@ -23,7 +23,7 @@ const questions = [
 function writeToFile(fileName, data) {
 
 }
-//axio, electron-html-to, 
+
 function init() {
     inquirer.prompt(questions).then(function (response) {
         console.log(response.color);
@@ -45,36 +45,25 @@ function init() {
                 console.log(name);
                 const html = generateHTML({ stars, color, ...data.data });
 
-                // var html = "<html><head></head><body>Test</body></html>"
+
 
                 console.log(html);
-                var conversion = convertFactory({
-                    converterPath: convertFactory.converters.PDF,
-                    timeout: 30000
+
+
+                var options = { format: 'Letter' };
+
+                pdf.create(html, options).toFile('./githubresume.pdf', function (err, res) {
+                    if (err) return console.log(err);
+                    console.log(res);
                 });
 
-                console.log(conversion);
 
-                conversion({ html: html }, function (err, result) {
-                    if (err) {
-                        return console.error(err);
-                    }
-
-                    console.log(result);
-
-                    result.stream.pipe(fs.createWriteStream('resume.pdf'));
-                    conversion.kill();
-
-                    // result.stream.pipe(fs.createWriteStream(path.join(__dirname, 'resume.pdf')));
-                    // conversion.kill();
-                });
-            })
-                .catch(function (error) {
-                    console.log(error)
-                });
+            });
         })
+            .catch(function (error) {
+                console.log(error)
+            });
     })
-
 };
 
 // Profile image

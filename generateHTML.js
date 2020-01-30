@@ -70,23 +70,24 @@ function generateHTML(data) {
            margin: 0;
            }
            h1 {
-           font-size: 3em;
+           font-size: 4em;
            }
            h2 {
-           font-size: 2.5em;
+           font-size: 3.5em;
            }
            h3 {
-           font-size: 2em;
+           font-size: 3em;
            text-align: center;
            }
            h4 {
-           font-size: 1.5em;
+           font-size: 2.5em;
+           text-align: center;
            }
            h5 {
-           font-size: 1.3em;
+           font-size: 2.3em;
            }
            h6 {
-           font-size: 1.2em;
+           font-size: 2.2em;
            }
            .photo-header {
            position: relative;
@@ -102,8 +103,10 @@ function generateHTML(data) {
            border-radius: 6px;
            }
            .photo-header img {
-           width: 250px;
-           height: 250px;
+           justify-content: center;
+           margin-left:450px;
+           width: 550px;
+           height: 550px;
            border-radius: 50%;
            object-fit: cover;
            margin-top: -75px;
@@ -121,9 +124,10 @@ function generateHTML(data) {
            width: 100%;
            text-align: center;
            padding: 20px 0;
-           font-size: 1.1em;
+           font-size: 2.1em;
            }
            .nav-link {
+             font-size: xx-large;
            display: inline-block;
            margin: 5px 10px;
            }
@@ -169,7 +173,7 @@ function generateHTML(data) {
   
            @media print { 
             body { 
-              zoom: .75; 
+              zoom: 1.00; 
             } 
            }
         </style>
@@ -180,7 +184,9 @@ function generateHTML(data) {
 
         <div class="wrapper">
         <div class="photo-header">
+        <div>
             <img src="${data.avatar_url}" alt="Bio image">
+            </div>
             <h1>Hello!</h1>
             <h2>My name is ${data.name}!</h2>
             <h4>Currently @ ${data.company}</h4>
@@ -203,13 +209,13 @@ function generateHTML(data) {
                 <div class="col">
                     <div class="card">
                         <h3>Public Repositories</h3>
-                        <p>${data.public_repos}</p>
+                        <h5>${data.public_repos}</h5>
                     </div>
                 </div>
                 <div class="col">
                     <div class="card">
                         <h3>Followers</h3>
-                        <p>${data.followers}</p>
+                        <h5>${data.followers}</h5>
                     </div>
                 </div>
             </div>
@@ -217,13 +223,13 @@ function generateHTML(data) {
                 <div class="col">
                     <div class="card">
                         <h3>Github Stars</h3>
-                        <p>${data.stars}</p>
+                        <h5>${data.stars}</h5>
                     </div>
                 </div>
                 <div class="col">
                     <div class="card">
                         <h3>Following</h3>
-                        <p>${data.following}</p>
+                        <h5>${data.following}</h5>
                     </div>
                 </div>
             </div>
